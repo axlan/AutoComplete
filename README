@@ -17,5 +17,9 @@ My first question is whether to start the project in QT creator or Visual studio
 Current dev set up:
 
 OS: Windows 7 64-bit
-Build Environmet: QT Creator 3.0 Based on QT 5.2 (MSVC 2010, 32bit)
+Build Environmet: QT Creator 3.0 Based on QT 5.2
 libqtx: libqxt-9068e83def48 nightly build. Followed directions here http://qt-project.org/wiki/LibQxt_in_QtCreator for install
+
+I originally was using MSVC 2010 as the compiler for QT, but I ran into issues setting up the debugger, and compiling libQXT was a pain, so I switched to MinGW.
+
+
