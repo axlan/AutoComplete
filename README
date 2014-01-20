@@ -1,0 +1,21 @@
+Currently in dev as hobby project.
+
+I can see a few possible features sets that I may want to support.
+
+I initially got started trying to make a cross platform tool with QT. I found that QT supported modifying the clipboard, and I could use QT extension library: http://dev.libqxt.org/libqxt/wiki/Home to get global hotkey functionality.
+
+In this configuration you would have a QT application that you could use to modify your code snippets (maybe with some variables that would fill in at insert time) and maybe give them short aliases. The this could get minimized and from other applications you could trigger the hotkey. This would bring up the application and prompt you to start typing. It would match a snippet based on the snippet text or the aliases. For entries with variable fields, these would then be filled in. This would get copied to the clipboard and the other application would regain focus allowing you to paste.
+
+Another option would be to add some global key capture/entry that would require less portable code. I only have looked into how this could be done in windows, but you could use Window's libraries to capture all the key strokes in order to fill in the autocomplete.
+
+Another option would be instead of reopenning the autocomplete application, directly emulate keystrokes so that the snippet could be directly selected and entered into another application without losing focus. For example in word you could type the global hotkey. After this as you typed the keys would be fed into the autocomplete which would enter the completed snippet into word. Hitting enter would then leave the completed text in word.
+
+These options can all coexist, though I imagine the second two would be easier to write with visual studio then QT creator since they use windows DLL's.
+
+My first question is whether to start the project in QT creator or Visual studio. I had some issues setting up libqxt, and I am much more familiar with visual studio, but portability is nice. I will continue my QT project and hope that the libqxt environment is reproducible. 
+
+Current dev set up:
+
+OS: Windows 7 64-bit
+Build Environmet: QT Creator 3.0 Based on QT 5.2 (MSVC 2010, 32bit)
+libqtx: libqxt-9068e83def48 nightly build. Followed directions here http://qt-project.org/wiki/LibQxt_in_QtCreator for install
