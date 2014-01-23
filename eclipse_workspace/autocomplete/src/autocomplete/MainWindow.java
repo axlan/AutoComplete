@@ -1,6 +1,8 @@
 package autocomplete;
 
 import java.awt.AWTException;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
@@ -8,13 +10,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-
-
 
 
 public class MainWindow extends JFrame {
@@ -23,21 +25,39 @@ public class MainWindow extends JFrame {
 	
 	final StringBuilder typedText=new StringBuilder();
 	final MutableBoolean recording=new MutableBoolean();
-	
+
 	public MainWindow(String arg0) throws HeadlessException {
 		super(arg0);
 
-		setSize(800, 400);
-		setVisible(true);
 		
 		recording.bool=true;
+		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		
 		
 		testButton=new JButton("Test");
 		
-		add(testButton);
+		getContentPane().add(testButton);
+
 		
+		EntryModel model=new EntryModel();
+ 
+        final JTable table = new JTable(model);
+        table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        table.setFillsViewportHeight(true);
+ 
+ 
+        //Create the scroll pane and add the table to it.
+        JScrollPane scrollPane = new JScrollPane(table);
+ 
+        //Add the scroll pane to this panel.
+        getContentPane().add(scrollPane);
+        
+        pack();
+		
+        setVisible(true);
+		
+        
 		testButton.addActionListener(
 				new ActionListener () {
 
@@ -130,6 +150,7 @@ public class MainWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 6655819945837463099L;
+	private JTable table;
 
 	/**
 	 * @param args
