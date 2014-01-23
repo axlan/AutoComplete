@@ -5,6 +5,13 @@ import java.awt.event.KeyEvent;
 
 public class RobotHelper {
 
+	public static void TypeKey(int key,Robot robot)
+	{
+		robot.keyPress(key);
+		robot.keyRelease(key);
+	}
+	
+	
 	public static void TypeString(String text,Robot robot)
 	{
 		for(int i=0;i<text.length();i++)

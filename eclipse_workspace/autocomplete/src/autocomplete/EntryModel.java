@@ -23,6 +23,15 @@ public class EntryModel extends AbstractTableModel {
 	   snippets.add("");
    }
    
+   public void AddRow()
+   {
+	   if(snippets.get(snippets.size()-1).length()!=0)
+	   {
+		   aliases.add("");
+		   snippets.add("");
+	   }
+   }
+   
 
     public int getColumnCount() {
         return columnNames.length;
